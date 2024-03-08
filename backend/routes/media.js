@@ -1,11 +1,14 @@
+const fetch = require('node-fetch');
 const express = require('express');
 const router = express.Router();
-const media = require('../services/media');
 
 router.get('/', function(req, res) {
   try {
-    const data = media.getData();
-    res.status(200).json(data);
+    fetch('https://raw.githubusercontent.com/HubSpotWebTeam/CodeExercise/main/src/js/data.json')
+      .then((res) => res.json())
+      .then((data) => {
+        res.send(data);
+      })
   } catch(error) {
     console.error(`Error fetching media `, error.message);
     res.status(500).json({message: error.message});

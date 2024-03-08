@@ -3,6 +3,7 @@
 .cache
 .parcel-cache
 .DS_Store
+.env
 
 # build directories
 dist
