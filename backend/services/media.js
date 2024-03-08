@@ -1,8 +1,8 @@
-const db = require('./db');
+// const db = require('./db');
 
 function getData() {
-  const rows = db.query('SELECT * FROM Media');
-  return rows;
+  // const rows = db.query('SELECT * FROM Media');
+  // return rows;
 }
 
 module.exports = {

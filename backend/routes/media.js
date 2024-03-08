@@ -1,10 +1,13 @@
-const fetch = require('node-fetch');
 const express = require('express');
+const fetch = require('node-fetch');
+const config = require('config');
 const router = express.Router();
 
-router.get('/', function(req, res) {
+const endpoint = config.get('endpointConfig');
+
+router.get('/', (req, res) => {
   try {
-    fetch('https://raw.githubusercontent.com/HubSpotWebTeam/CodeExercise/main/src/js/data.json')
+    fetch(endpoint)
       .then((res) => res.json())
       .then((data) => {
         res.send(data);
