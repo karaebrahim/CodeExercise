@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import Card from './Card';
 
 const Wrapper = styled.div`
@@ -11,23 +11,24 @@ const Wrapper = styled.div`
 `;
 
 export default Media = () => {
-  const [media, setMedia] = useState([]);
-  useEffect(() => {
-    const abortController = new AbortController()
-    fetch('http://localhost:3001/api/media', { signal: abortController.signal })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setMedia(data);
-      }).catch(err => console.log(err))
-      return () => { abortController.abort() }
-  }, []);
+  const { isPending, error, data } = useQuery({
+    queryKey: ['media'],
+    queryFn: () =>
+      fetch('http://localhost:3001/api/media')
+        .then((res) =>
+          res.json(),
+        )
+        .catch(err => console.log(err)),
+  });
+
+  if (isPending) return 'Loading...'; // TODO: create Loading component
+  if (error) return 'An error has occurred: ' + error.message;
+
   return (
     <Wrapper>
-      {media.map((medium, i) => (
+      {data.map((medium, i) => (
         <Card key={i} data={medium} />
       ))}
     </Wrapper>
-  );
+  )
 };

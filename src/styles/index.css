@@ -15,3 +15,7 @@ body {
   color: var(--text);
   background-color: var(--primary);
 }
+
+.visually-hidden {
+  display: none;
+}
