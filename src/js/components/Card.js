@@ -39,7 +39,7 @@ const addDefaultSrc = (event) => {
 export default Card = ({ data }) => {
   return (
     <Wrapper>
-      <LazyLoadImage src={data.poster} alt={data.title} onError={addDefaultSrc} />
+      <LazyLoadImage src={data.poster} alt={data.title} width='340' height='510' onError={addDefaultSrc} />
 			<Title>{data.title} {data.year && <span>({data.year})</span>}</Title>
 			{data.genre &&
 				<Para>
