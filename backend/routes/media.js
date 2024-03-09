@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => {
-        res.send(data);
-      })
+        res.send(data.media);
+      }).catch(err=>res.send({err},{status: 500} ))
   } catch(error) {
     console.error(`Error fetching media `, error.message);
     res.status(500).json({message: error.message});
