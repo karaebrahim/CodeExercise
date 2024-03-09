@@ -10,6 +10,10 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid lightgray;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -18,7 +22,16 @@ const Wrapper = styled.div`
   gap: 1rem;
 
   &.even {
-    align-items: flex-end;
+    margin-top: 1rem;
+
+    @media (min-width: 600px) {
+      align-items: flex-end;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 50%;
   }
 `;
 

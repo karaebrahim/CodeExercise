@@ -10,6 +10,10 @@ const Input = styled.input`
 	height: 2rem;
 	width: 15rem;
 	padding: 0.5rem 2rem 0.5rem 0.5rem;
+
+	@media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const Icon = styled.span`
