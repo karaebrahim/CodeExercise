@@ -30,18 +30,17 @@ const Icon = styled.span`
 `;
 
 export default Dropdown = () => {
-	const [genreId, setGenreId] = useState();
+	const [year, setYear] = useState();
   return (
     <div>
 			<Container>
 				<Label htmlFor="genre-select">
 				<SelectWrapper>
-					<select onChange={(event) => setGenreId(event.target.value)} name="genre-select" id="genre-select" defaultValue={genreId}>
-						<option disabled="" hidden="" value="">Genre</option>
-						<option value="action">Action</option>
-						<option value="adventure">Adventure</option>
-						<option value="comedy">Comedy</option>
-						<option value="crime">Crime</option>
+					<select onChange={(event) => setYear(parseInt(event.target.value))} name="year-select" id="year-select" defaultValue={year}>
+						<option disabled="" hidden="" value="">Year</option>
+						{/* {data.map((medium, i) => (
+							<option key={i} value={i + 1}>{medium.year}</option>
+						))} */}
 					</select>
 
 					<Icon className="material-symbols-outlined">arrow_drop_down</Icon>

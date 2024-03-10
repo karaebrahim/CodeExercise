@@ -11,26 +11,30 @@ const Wrapper = styled.div`
   padding: 1rem;
 `;
 
+const ButtonContainer = styled.div`
+  margin: 1rem;
+  text-align: center;
+`;
+
 export default Media = () => {
-	const [year, setYear] = useState();
-  const { isPending, error, data } = useMedia(year);
+  const pageSize = 9;
+	const [page, setPage] = useState(1);
+  const { isPending, error, data } = useMedia({ page, pageSize });
 
   if (isPending) return <Loader />;
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <>
-      <select onChange={(event) => setYear(parseInt(event.target.value))} name="year-select" id="year-select" defaultValue={year}>
-        <option disabled="" hidden="" value="">Year</option>
-        {data.map((medium, i) => (
-          <option key={i} value={i + 1}>{medium.year}</option>
-        ))}
-      </select>
       <Wrapper>
-        {data.map((medium, i) => (
+        {data?.map((medium, i) => (
           <Card key={i} data={medium} />
         ))}
       </Wrapper>
+      <ButtonContainer>
+        <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+        <button onClick={() => setPage(page + 1)}>Next</button>
+      </ButtonContainer>
     </>
   )
 };
