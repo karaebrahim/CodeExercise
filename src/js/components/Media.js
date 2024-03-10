@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useQuery } from '@tanstack/react-query';
+import useMedia from '../hooks/useMedia';
+import Loader from './Loader';
 import Card from './Card';
 
 const Wrapper = styled.div`
@@ -11,24 +12,25 @@ const Wrapper = styled.div`
 `;
 
 export default Media = () => {
-  const { isPending, error, data } = useQuery({
-    queryKey: ['media'],
-    queryFn: () =>
-      fetch('http://localhost:3001/api/media')
-        .then((res) =>
-          res.json(),
-        )
-        .catch(err => console.log(err)),
-  });
+	const [year, setYear] = useState();
+  const { isPending, error, data } = useMedia(year);
 
-  if (isPending) return 'Loading...'; // TODO: create Loading component
+  if (isPending) return <Loader />;
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <Wrapper>
-      {data.map((medium, i) => (
-        <Card key={i} data={medium} />
-      ))}
-    </Wrapper>
+    <>
+      <select onChange={(event) => setYear(parseInt(event.target.value))} name="year-select" id="year-select" defaultValue={year}>
+        <option disabled="" hidden="" value="">Year</option>
+        {data.map((medium, i) => (
+          <option key={i} value={i + 1}>{medium.year}</option>
+        ))}
+      </select>
+      <Wrapper>
+        {data.map((medium, i) => (
+          <Card key={i} data={medium} />
+        ))}
+      </Wrapper>
+    </>
   )
 };

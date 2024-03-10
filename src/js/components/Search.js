@@ -26,7 +26,7 @@ const Icon = styled.span`
 export default Search = () => {
   return (
 		<Wrapper>
-			<label for="app-search" className="visually-hidden">Search the app:</label>
+			<label htmlFor="app-search" className="visually-hidden">Search the app:</label>
 			<Input type="search" id="app-search" placeholder="" value="" />
 			<Icon className="material-symbols-outlined">search</Icon>
 		</Wrapper>

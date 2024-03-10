@@ -15,8 +15,8 @@ const Wrapper = styled.div`
 `;
 
 const Input = styled.input`
-	height: 1.5rem;
-	width: 1.5rem;
+	height: 1rem;
+	width: 1rem;
 	margin-right: 0.5rem;
 `;
 
@@ -25,25 +25,23 @@ export default Type = () => {
 		<Container>
 			<Wrapper className="odd">
 				<Input
-					type="checkbox"
-					name="movie-checkbox"
-					id="movie-checkbox"
-					value="movie-checkbox"
-					checked
+					type="radio"
+					name="movie-radio"
+					id="movie-radio"
+					value="movie-radio"
 				/>
-				<label for="movie-checkbox">
+				<label htmlFor="movie-radio">
 					Movies
 				</label>
 			</Wrapper>
 			<Wrapper className="even">
 				<Input
-					type="checkbox"
-					name="book-checkbox"
-					id="book-checkbox"
-					value="book-checkbox"
-					checked
+					type="radio"
+					name="book-radio"
+					id="book-radio"
+					value="book-radio"
 				/>
-				<label for="book-checkbox">
+				<label htmlFor="book-radio">
 					Books
 				</label>
 			</Wrapper>

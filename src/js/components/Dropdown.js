@@ -1,25 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+	width: 50%;
+
+	select {
+		appearance: none;
+		width: 100%;
+		font-size: 1rem;
+		padding: 0.5rem;
+		border: 1px solid lightgray;
+		border-bottom: 2px solid darkgray;
+		cursor: pointer;
+	}
+`;
+
+const Label = styled.label`
+	position: relative;
+`;
+
+const SelectWrapper = styled.span`
+	display: flex;
+	align-items: center;
+`;
+
+const Icon = styled.span`
+	position: absolute;
+	right: 1rem;
+`;
 
 export default Dropdown = () => {
+	const [genreId, setGenreId] = useState();
   return (
     <div>
-			<label for="genre-select">
-			<span>
-				<select name="genre-select" id="genre-select">
-					<option selected="" disabled="" hidden="" value="">Genre</option>
-					<option value="value-0">Tangerine</option>
-					<option value="value-1">Teal</option>
-					<option value="value-2">Purple</option>
-					<option value="value-3">Red</option>
-					<option value="value-4">Blue</option>
-					<option value="value-5">Green</option>
-					<option value="value-6">Yellow</option>
-					<option value="value-7">Orange</option>
-				</select>
+			<Container>
+				<Label htmlFor="genre-select">
+				<SelectWrapper>
+					<select onChange={(event) => setGenreId(event.target.value)} name="genre-select" id="genre-select" defaultValue={genreId}>
+						<option disabled="" hidden="" value="">Genre</option>
+						<option value="action">Action</option>
+						<option value="adventure">Adventure</option>
+						<option value="comedy">Comedy</option>
+						<option value="crime">Crime</option>
+					</select>
 
-				<span class="material-symbols-outlined">arrow_drop_down</span>
-			</span>
-			</label>
+					<Icon className="material-symbols-outlined">arrow_drop_down</Icon>
+				</SelectWrapper>
+				</Label>
+			</Container>
     </div>
   )
 };
