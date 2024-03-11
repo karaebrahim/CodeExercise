@@ -12,6 +12,7 @@ interface MediaType {
 interface MediaQuery {
 	year: string;
 	genre: string;
+	type: string;
 	page: number;
 	pageSize: number;
 }
@@ -23,6 +24,7 @@ const useMedia = (query: MediaQuery) => useQuery<MediaType[], Error>({
 			params: {
 				year: query.year,
 				genre: query.genre,
+				type: query.type,
 				_start: (query.page - 1) * query.pageSize,
 				_limit: query.pageSize,
 			},

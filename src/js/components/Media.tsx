@@ -19,11 +19,12 @@ const ButtonContainer = styled.div`
 const Media = () => {
   const [year, setYear] = useState();
   const [genre, setGenre] = useState();
+  const [type, setType] = useState();
 
   const pageSize = 9;
   const [page, setPage] = useState(1);
 
-  const { isLoading, error, data } = useMedia({ year, genre, page, pageSize });
+  const { isLoading, error, data } = useMedia({ year, genre, type, page, pageSize });
 
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -57,6 +58,26 @@ const Media = () => {
         <option value="action">Action</option>
         <option value="thriller">Thriller</option>
       </select>
+      <input
+        type="radio"
+        name="movie-radio"
+        id="movie-radio"
+        value="movie"
+        onChange={(e) => setType(e.target.value)}
+      />
+      <label htmlFor="movie-radio">
+        Movies
+      </label>
+      <input
+        type="radio"
+        name="book-radio"
+        id="book-radio"
+        value="book"
+        onChange={(e) => setType(e.target.value)}
+      />
+      <label htmlFor="book-radio">
+        Books
+      </label>
       <Wrapper>
         {searchInput.length > 1 ? (
           filteredResults.map((medium, i) => {
