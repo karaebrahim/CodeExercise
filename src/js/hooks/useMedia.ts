@@ -10,17 +10,19 @@ interface MediaType {
 }
 
 interface MediaQuery {
-	page: number;
-	pageSize: number;
+	// page: number;
+	// pageSize: number;
+	year: string;
 }
 
 const useMedia = (query: MediaQuery) => useQuery<MediaType[], Error>({
-	queryKey: ['media', query],
+	queryKey: query ? ['media', query] : ['media'],
 	queryFn: () => axios
 		.get('http://localhost:3001/api/media', {
 			params: {
-				_start: (query.page - 1) * query.pageSize,
-				_limit: query.pageSize
+				query
+				// _start: (query.page - 1) * query.pageSize,
+				// _limit: query.pageSize
 			}
 		})
 		.then((res) => res.data),
