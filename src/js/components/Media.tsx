@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import useMedia from '../hooks/useMedia';
+import Filters from './Filters';
 import Loader from './Loader';
 import Card from './Card';
 
@@ -26,6 +27,7 @@ const Media = () => {
 
   return (
     <>
+      <Filters data={data} />
       <Wrapper>
         {data?.map((medium, i) => (
           <Card key={i} data={medium} />

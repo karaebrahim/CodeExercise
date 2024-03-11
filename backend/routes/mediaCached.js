@@ -25,7 +25,7 @@ router.get('/all', (req, res) => {
 //http://localhost:3001/api/mediaCached?page=2
 router.get('/', (req, res) => {
   const pageNumber = parseInt(req.query.page) || 1;
-  const pageSize = parseInt(req.query.pageSize) || 10;
+  const pageSize = parseInt(req.query.pageSize) || 9;
   if (cachedData) {
     return res.send(makePage(cachedData, pageNumber, pageSize));
   } else {

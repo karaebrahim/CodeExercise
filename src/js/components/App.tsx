@@ -5,7 +5,6 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import Filters from './Filters';
 import Media from './Media';
 
 const Wrapper = styled.div`
@@ -24,7 +23,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Wrapper>
-        <Filters />
         <Media />
       </Wrapper>
       <ReactQueryDevtools initialIsOpen={false} />

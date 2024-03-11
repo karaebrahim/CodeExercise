@@ -16,7 +16,7 @@ interface MediaQuery {
 
 const useMedia = (query: MediaQuery) => useQuery<MediaType[], Error>({
 	queryKey: ['media', query],
-	queryFn: () =>  axios
+	queryFn: () => axios
 		.get('http://localhost:3001/api/media', {
 			params: {
 				_start: (query.page - 1) * query.pageSize,

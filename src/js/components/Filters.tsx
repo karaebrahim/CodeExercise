@@ -35,11 +35,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Filters = () => {
+const Filters = ({ data }) => {
   return (
     <Container>
       <Wrapper className="odd">
-        <Dropdown />
+        <Dropdown data={data} />
         <Type />
       </Wrapper>
       <Wrapper className="even">
