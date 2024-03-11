@@ -20,7 +20,22 @@ const ButtonContainer = styled.div`
 const Media = () => {
   const pageSize = 9;
 	const [page, setPage] = useState(1);
-  const { isLoading, error, data } = useMedia({ page, pageSize });
+  const { isLoading, error, data } = useMedia({ page, pageSize, year: '' });
+
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+
+  const searchItems = (searchValue: string) => {
+    setSearchInput(searchValue);
+    if (searchInput !== '') {
+      const filteredData = data?.filter((item) => {
+        return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
+      })
+      setFilteredResults(filteredData);
+    } else {
+      setFilteredResults(data);
+    }
+  }
 
   if (isLoading) return <Loader />;
   if (error) return `An error has occurred: ${error.message}`;
@@ -28,10 +43,19 @@ const Media = () => {
   return (
     <>
       <Filters data={data} />
+      <input type="text" onChange={(e) => searchItems(e.target.value)} />
       <Wrapper>
-        {data?.map((medium, i) => (
-          <Card key={i} data={medium} />
-        ))}
+        {searchInput.length > 1 ? (
+          filteredResults.map((medium, i) => {
+            return (
+              <Card key={i} data={medium} />
+            )
+          })
+        ) : (
+          data?.map((medium, i) => (
+            <Card key={i} data={medium} />
+          ))
+        )}
       </Wrapper>
       <ButtonContainer>
         <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>

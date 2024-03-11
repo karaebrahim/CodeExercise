@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import useMedia from '../hooks/useMedia';
 
 const Container = styled.div`
 	width: 50%;
@@ -30,13 +29,12 @@ const Icon = styled.span`
 	right: 1rem;
 `;
 
-const Dropdown = () => {
+const Dropdown = ({ data }) => {
 	const [year, setYear] = useState();
-  const { data } = useMedia(year);
   return (
     <div>
 			<Container>
-				<Label htmlFor="genre-select">
+				<Label htmlFor="year-select">
 				<SelectWrapper>
 					<select onChange={(event) => setYear(event.target.value)} name="year-select" id="year-select" value={year}>
 						<option value="">Year</option>
