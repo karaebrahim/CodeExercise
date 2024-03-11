@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   padding: 1rem;
 `;
 
-const Loader = () => {
+const Loader = () => { // TODO: Add a loading animation
   return (
     <Wrapper>
       <div>Loading...</div>

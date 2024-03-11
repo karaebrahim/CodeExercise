@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import useMedia from '../hooks/useMedia';
-import Filters from './Filters';
 import Loader from './Loader';
 import Card from './Card';
 
@@ -18,9 +17,13 @@ const ButtonContainer = styled.div`
 `;
 
 const Media = () => {
+  const [year, setYear] = useState();
+  const [genre, setGenre] = useState();
+
   const pageSize = 9;
-	const [page, setPage] = useState(1);
-  const { isLoading, error, data } = useMedia({ page, pageSize, year: '' });
+  const [page, setPage] = useState(1);
+
+  const { isLoading, error, data } = useMedia({ year, genre, page, pageSize });
 
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -42,8 +45,18 @@ const Media = () => {
 
   return (
     <>
-      <Filters data={data} />
       <input type="text" onChange={(e) => searchItems(e.target.value)} />
+      <select onChange={(event) => setYear(event.target.value)} name="year-select" id="year-select" value={year}>
+        <option value="">Year</option>
+        <option value="1974">1974</option>
+        <option value="1981">1981</option>
+        <option value="2010">2010</option>
+      </select>
+      <select onChange={(event) => setGenre(event.target.value)} name="genre-select" id="genre-select" value={genre}>
+        <option value="">Genre</option>
+        <option value="action">Action</option>
+        <option value="thriller">Thriller</option>
+      </select>
       <Wrapper>
         {searchInput.length > 1 ? (
           filteredResults.map((medium, i) => {
