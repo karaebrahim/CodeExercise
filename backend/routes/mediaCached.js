@@ -16,8 +16,8 @@ router.get('/all', (req, res) => {
     fetch(endpoint)
 			.then((res) => res.json())
 			.then((data) => {
-				cache.set('media', data, 5);
-				res.send(data);
+				cache.set('media', data.media, 5);
+				res.send(data.media);
 			});
   }
 });
@@ -32,8 +32,8 @@ router.get('/', (req, res) => {
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => {
-        cache.set('media', data, 5);
-        return res.send(makePage(data, pageNumber, pageSize));
+        cache.set('media', data.media, 5);
+        return res.send(makePage(data.media, pageNumber, pageSize));
       });
   }
 });
