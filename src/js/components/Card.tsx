@@ -37,7 +37,7 @@ const addDefaultSrc = (event) => {
   event.target.src = 'https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg';
 }
 
-export default Card = ({ data }) => {
+const Card = ({ data }) => {
   return (
     <Wrapper>
       <LazyLoadImage src={data.poster} alt={data.title} width='340' height='510' onError={addDefaultSrc} />
@@ -54,3 +54,5 @@ export default Card = ({ data }) => {
     </Wrapper>
   )
 };
+
+export default Card;

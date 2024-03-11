@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 const queryClient = new QueryClient()
 
-export default App = () => {
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Wrapper>
@@ -31,3 +31,5 @@ export default App = () => {
     </QueryClientProvider>
   )
 }
+
+export default App;

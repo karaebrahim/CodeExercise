@@ -16,13 +16,13 @@ const ButtonContainer = styled.div`
   text-align: center;
 `;
 
-export default Media = () => {
+const Media = () => {
   const pageSize = 9;
 	const [page, setPage] = useState(1);
-  const { isPending, error, data } = useMedia({ page, pageSize });
+  const { isLoading, error, data } = useMedia({ page, pageSize });
 
-  if (isPending) return <Loader />;
-  if (error) return 'An error has occurred: ' + error.message;
+  if (isLoading) return <Loader />;
+  if (error) return `An error has occurred: ${error.message}`;
 
   return (
     <>
@@ -38,3 +38,5 @@ export default Media = () => {
     </>
   )
 };
+
+export default Media;

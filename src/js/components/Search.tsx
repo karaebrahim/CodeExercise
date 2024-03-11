@@ -23,7 +23,7 @@ const Icon = styled.span`
 	color: lightgray;
 `;
 
-export default Search = () => {
+const Search = () => {
   return (
 		<Wrapper>
 			<label htmlFor="app-search" className="visually-hidden">Search the app:</label>
@@ -32,3 +32,5 @@ export default Search = () => {
 		</Wrapper>
   )
 };
+
+export default Search;

@@ -29,7 +29,7 @@ const Icon = styled.span`
 	right: 1rem;
 `;
 
-export default Dropdown = () => {
+const Dropdown = () => {
 	const [year, setYear] = useState();
   return (
     <div>
@@ -37,8 +37,8 @@ export default Dropdown = () => {
 				<Label htmlFor="genre-select">
 				<SelectWrapper>
 					<select onChange={(event) => setYear(parseInt(event.target.value))} name="year-select" id="year-select" defaultValue={year}>
-						<option disabled="" hidden="" value="">Year</option>
-						{/* {data.map((medium, i) => (
+						{/* <option disabled="" hidden="" value="">Year</option>
+						 {data.map((medium, i) => (
 							<option key={i} value={i + 1}>{medium.year}</option>
 						))} */}
 					</select>
@@ -50,3 +50,5 @@ export default Dropdown = () => {
     </div>
   )
 };
+
+export default Dropdown;

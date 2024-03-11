@@ -20,7 +20,7 @@ const Input = styled.input`
 	margin-right: 0.5rem;
 `;
 
-export default Type = () => {
+const Type = () => {
   return (
 		<Container>
 			<Wrapper className="odd">
@@ -48,3 +48,5 @@ export default Type = () => {
 		</Container>
   )
 };
+
+export default Type;

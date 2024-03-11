@@ -13,10 +13,12 @@ const Button = styled.button`
 	}
 `;
 
-export default Clear = () => {
+const Clear = () => {
   return (
     <div>
       <Button>Clear Filters</Button>
     </div>
   )
 };
+
+export default Clear;

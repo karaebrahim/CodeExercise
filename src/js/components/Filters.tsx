@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Filters = () => {
+const Filters = () => {
   return (
     <Container>
       <Wrapper className="odd">
@@ -49,3 +49,5 @@ export default Filters = () => {
     </Container>
   )
 };
+
+export default Filters;
