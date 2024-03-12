@@ -9,34 +9,6 @@ const Wrapper = styled.div`
   gap: 1rem;
 `;
 
-const Container = styled.div`
-  width: 50%;
-
-  select {
-    appearance: none;
-    width: 100%;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border: 1px solid lightgray;
-    border-bottom: 2px solid darkgray;
-    cursor: pointer;
-  }
-`;
-
-const Label = styled.label`
-  position: relative;
-`;
-
-const SelectWrapper = styled.span`
-  display: flex;
-  align-items: center;
-`;
-
-const Icon = styled.span`
-  position: absolute;
-  right: 1rem;
-`;
-
 const Dropdown = ({ year, genre, setYear, setGenre }) => {
   const { data: dataYear } = useYears();
   const { data: dataGenre } = useGenres();

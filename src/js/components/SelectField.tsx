@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { capitalize } from '../utils/capitalize';
 
 const Container = styled.div`
 	width: 50%;
@@ -30,9 +31,6 @@ const Icon = styled.span`
 `;
 
 const SelectField = ({ value, type, data, setData }) => {
-  const capitalize = (string: string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
   return (
     <Container>
       <Label htmlFor={`${type}-select`}>
