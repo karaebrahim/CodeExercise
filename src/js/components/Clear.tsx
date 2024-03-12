@@ -13,10 +13,10 @@ const Button = styled.button`
 	}
 `;
 
-const Clear = () => {
+const Clear = ({ clearFilters }) => {
   return (
     <div>
-      <Button>Clear Filters</Button>
+      <Button onClick={() => clearFilters()}>Clear Filters</Button>
     </div>
   )
 };

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import useYears from '../hooks/useYears';
+import useGenres from '../hooks/useGenres';
+
+const Wrapper = styled.div`
+	display: flex;
+	gap: 1rem;
+`;
 
 const Container = styled.div`
 	width: 50%;
@@ -29,25 +36,38 @@ const Icon = styled.span`
 	right: 1rem;
 `;
 
-const Dropdown = ({ data }) => {
-	const [year, setYear] = useState();
+const Dropdown = ({ year, genre, setYear, setGenre }) => {
+	const { data } = useYears();
+	const { data: dataGenre } = useGenres();
   return (
-    <div>
+		<Wrapper>
 			<Container>
 				<Label htmlFor="year-select">
 				<SelectWrapper>
 					<select onChange={(event) => setYear(event.target.value)} name="year-select" id="year-select" value={year}>
 						<option value="">Year</option>
-						 {data?.map((medium, i) => (
-							<option key={i} value={medium.year}>{medium.year}</option>
+							{data?.map((entry, i) => (
+							<option key={i} value={entry}>{entry}</option>
 						)).sort()}
 					</select>
-
 					<Icon className="material-symbols-outlined">arrow_drop_down</Icon>
 				</SelectWrapper>
 				</Label>
 			</Container>
-    </div>
+			<Container>
+				<Label htmlFor="genre-select">
+				<SelectWrapper>
+					<select onChange={(event) => setGenre(event.target.value)} name="genre-select" id="genre-select" value={genre}>
+						<option value="">Genre</option>
+							{dataGenre?.map((entry, i) => (
+							<option key={i} value={entry}>{entry}</option>
+						)).sort()}
+					</select>
+					<Icon className="material-symbols-outlined">arrow_drop_down</Icon>
+				</SelectWrapper>
+				</Label>
+			</Container>
+		</Wrapper>
   )
 };
 

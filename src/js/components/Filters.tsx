@@ -35,16 +35,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const Filters = ({ data }) => {
+const Filters = ({ year, setYear, genre, setGenre, clearFilters, type, setType }) => {
   return (
     <Container>
       <Wrapper className="odd">
-        <Dropdown data={data} />
-        <Type />
+        <Dropdown year={year} genre={genre} setYear={setYear} setGenre={setGenre} />
+        <Type type={type} setType={setType} />
       </Wrapper>
       <Wrapper className="even">
         <Search />
-        <Clear />
+        <Clear clearFilters={clearFilters} />
       </Wrapper>
     </Container>
   )

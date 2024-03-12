@@ -20,15 +20,17 @@ const Input = styled.input`
 	margin-right: 0.5rem;
 `;
 
-const Type = () => {
+const Type = ({ type, setType }) => {
   return (
 		<Container>
 			<Wrapper className="odd">
 				<Input
 					type="radio"
-					name="movie-radio"
+					name="type-radio"
 					id="movie-radio"
-					value="movie-radio"
+					value="movie"
+					checked={type == 'movie' ? true : false}
+					onChange={(e) => setType(e.target.value)}
 				/>
 				<label htmlFor="movie-radio">
 					Movies
@@ -37,9 +39,11 @@ const Type = () => {
 			<Wrapper className="even">
 				<Input
 					type="radio"
-					name="book-radio"
+					name="type-radio"
 					id="book-radio"
-					value="book-radio"
+					value="book"
+					checked={type == 'book' ? true : false}
+					onChange={(e) => setType(e.target.value)}
 				/>
 				<label htmlFor="book-radio">
 					Books

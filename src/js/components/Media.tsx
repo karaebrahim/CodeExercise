@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import useMedia from '../hooks/useMedia';
 import Loader from './Loader';
+import Filters from './Filters';
 import Card from './Card';
 
 const Wrapper = styled.div`
@@ -41,43 +42,27 @@ const Media = () => {
     }
   }
 
+  const clearFilters = () => {
+    setYear('');
+    setGenre('');
+    setType('');
+  }
+
   if (isLoading) return <Loader />;
   if (error) return `An error has occurred: ${error.message}`;
 
   return (
     <>
+      <Filters
+        year={year}
+        genre={genre}
+        type={type}
+        setYear={setYear}
+        setGenre={setGenre}
+        setType={setType}
+        clearFilters={clearFilters}
+      />
       <input type="text" onChange={(e) => searchItems(e.target.value)} />
-      <select onChange={(event) => setYear(event.target.value)} name="year-select" id="year-select" value={year}>
-        <option value="">Year</option>
-        <option value="1974">1974</option>
-        <option value="1981">1981</option>
-        <option value="2010">2010</option>
-      </select>
-      <select onChange={(event) => setGenre(event.target.value)} name="genre-select" id="genre-select" value={genre}>
-        <option value="">Genre</option>
-        <option value="action">Action</option>
-        <option value="thriller">Thriller</option>
-      </select>
-      <input
-        type="radio"
-        name="movie-radio"
-        id="movie-radio"
-        value="movie"
-        onChange={(e) => setType(e.target.value)}
-      />
-      <label htmlFor="movie-radio">
-        Movies
-      </label>
-      <input
-        type="radio"
-        name="book-radio"
-        id="book-radio"
-        value="book"
-        onChange={(e) => setType(e.target.value)}
-      />
-      <label htmlFor="book-radio">
-        Books
-      </label>
       <Wrapper>
         {searchInput.length > 1 ? (
           filteredResults.map((medium, i) => {
