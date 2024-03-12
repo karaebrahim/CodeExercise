@@ -26,8 +26,7 @@ const Icon = styled.span`
 const Search = ({ searchItems }) => {
   return (
 		<Wrapper>
-			<label htmlFor="app-search" className="visually-hidden">Search the app:</label>
-      <Input type="text" id="app-search" placeholder="" onChange={(e) => searchItems(e.target.value)} />
+      <Input type="text" id="app-search" aria-label="Search the app" placeholder="" onChange={(e) => searchItems(e.target.value)} />
 			<Icon className="material-symbols-outlined">search</Icon>
 		</Wrapper>
   )
