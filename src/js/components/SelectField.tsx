@@ -29,17 +29,17 @@ const Icon = styled.span`
 	right: 1rem;
 `;
 
-const SelectField = ({ type, data, setData }) => {
-  const capitalize = (string) => {
+const SelectField = ({ value, type, data, setData }) => {
+  const capitalize = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
   return (
     <Container>
       <Label htmlFor={`${type}-select`}>
       <SelectWrapper>
-        <select onChange={(event) => setData(event.target.value)} name={`${type}-select`} id={`${type}-select`} value={type}>
+        <select onChange={(event) => setData(event.target.value)} name={`${type}-select`} id={`${type}-select`} value={value}>
           <option value="">{capitalize(type)}</option>
-            {data?.map((entry, i) => (
+            {data?.map((entry: string, i: number) => (
             <option key={i} value={entry}>{capitalize(entry)}</option>
           )).sort()}
         </select>
