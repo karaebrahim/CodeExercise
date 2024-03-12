@@ -61,8 +61,8 @@ const Media = () => {
         setGenre={setGenre}
         setType={setType}
         clearFilters={clearFilters}
+        searchItems={searchItems}
       />
-      <input type="text" onChange={(e) => searchItems(e.target.value)} />
       <Wrapper>
         {searchInput.length > 1 ? (
           filteredResults.map((medium, i) => {

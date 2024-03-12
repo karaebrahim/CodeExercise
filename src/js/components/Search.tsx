@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 
 const Input = styled.input`
 	border: 1px solid lightgray;
-	height: 2rem;
+	height: 1rem;
 	width: 15rem;
 	padding: 0.5rem 2rem 0.5rem 0.5rem;
 
@@ -23,11 +23,11 @@ const Icon = styled.span`
 	color: lightgray;
 `;
 
-const Search = () => {
+const Search = ({ searchItems }) => {
   return (
 		<Wrapper>
 			<label htmlFor="app-search" className="visually-hidden">Search the app:</label>
-			<Input type="search" id="app-search" placeholder="" value="" />
+      <Input type="text" id="app-search" placeholder="" onChange={(e) => searchItems(e.target.value)} />
 			<Icon className="material-symbols-outlined">search</Icon>
 		</Wrapper>
   )

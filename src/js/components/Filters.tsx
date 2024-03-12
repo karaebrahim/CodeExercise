@@ -35,7 +35,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const Filters = ({ year, setYear, genre, setGenre, clearFilters, type, setType }) => {
+const Filters = ({
+  year,
+  setYear,
+  genre,
+  setGenre,
+  clearFilters,
+  type,
+  setType,
+  searchItems
+}) => {
   return (
     <Container>
       <Wrapper className="odd">
@@ -43,7 +52,7 @@ const Filters = ({ year, setYear, genre, setGenre, clearFilters, type, setType }
         <Type type={type} setType={setType} />
       </Wrapper>
       <Wrapper className="even">
-        <Search />
+        <Search searchItems={searchItems} />
         <Clear clearFilters={clearFilters} />
       </Wrapper>
     </Container>

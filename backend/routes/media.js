@@ -18,6 +18,7 @@ router.get('/all', (req, res) => {
   }
 });
 
+// Filtered data by year, type, genre
 router.get('/', (req, res) => {
   try {
     fetch(endpoint)
