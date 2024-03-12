@@ -24,16 +24,20 @@ router.get('/', (req, res) => {
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => {
-        if (req.query.year || req.query.type || req.query.genre) {
-          const filteredMedia = data.media.filter((item) =>
-          (item.year === req.query.year) ||
-          (item.type === req.query.type) ||
-          (item.genre.includes(req.query.genre))
-        )
-        return res.send(filteredMedia);
-        } else {
-          return res.send(data.media);
-        }
+        const filtered = data.media
+          .filter((item) => {
+            if (req.query.year && item.year !== req.query.year) return;
+            return item;
+          })
+          .filter((item) => {
+            if (req.query.type && item.type !== req.query.type) return;
+            return item;
+          })
+          .filter((item) => {
+            if (req.query.genre && !item.genre.includes(req.query.genre)) return;
+            return item;
+          })
+        return res.send(filtered);
       }).catch(err=>res.send({err},{status: 500} ))
   } catch(error) {
     console.error(`Error fetching media `, error.message);
