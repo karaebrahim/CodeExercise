@@ -38,8 +38,8 @@ const SelectField = ({ value, type, data, setData }) => {
         <select onChange={(event) => setData(event.target.value)} name={`${type}-select`} id={`${type}-select`} value={value}>
           <option value="">{capitalize(type)}</option>
             {data?.map((entry: string, i: number) => (
-            <option key={i} value={entry}>{capitalize(entry)}</option>
-          )).sort()}
+              <option key={i} value={entry}>{capitalize(entry)}</option>
+            ))}
         </select>
         <Icon className="material-symbols-outlined">arrow_drop_down</Icon>
       </SelectWrapper>

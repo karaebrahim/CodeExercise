@@ -17,6 +17,11 @@ const ButtonContainer = styled.div`
   text-align: center;
 `;
 
+const Para = styled.p`
+  margin: 2rem auto;
+  text-align: center;
+`;
+
 const Media = () => {
   const [year, setYear] = useState();
   const [genre, setGenre] = useState();
@@ -50,6 +55,7 @@ const Media = () => {
 
   if (isLoading) return <Loader />;
   if (error) return `An error has occurred: ${error.message}`;
+  const isIdle = data?.length === 0;
 
   return (
     <>
@@ -76,10 +82,14 @@ const Media = () => {
           ))
         )}
       </Wrapper>
-      <ButtonContainer>
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
-        <button onClick={() => setPage(page + 1)}>Next</button>
-      </ButtonContainer>
+      {isIdle ?
+        <Para>No data matches those filters. Please try again.</Para>
+      : (
+        <ButtonContainer>
+          <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+          <button onClick={() => setPage(page + 1)}>Next</button>
+        </ButtonContainer>
+      )}
     </>
   )
 };
