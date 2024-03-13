@@ -35,7 +35,7 @@ const SelectField = ({ value, type, data, setData }) => {
     <Container>
       <Label htmlFor={`${type}-select`}>
       <SelectWrapper>
-        <select onChange={(event) => setData(event.target.value)} name={`${type}-select`} id={`${type}-select`} value={value}>
+        <select onChange={(event) => setData(event.target.value)} name={`${type}-select`} id={`${type}-select`} value={value} role="select">
           <option value="">{capitalize(type)}</option>
             {data?.map((entry: string, i: number) => (
               <option key={i} value={entry}>{capitalize(entry)}</option>

@@ -4,5 +4,5 @@
 * @returns a new string
 */
 export const capitalize = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  if (string !== undefined) return string.charAt(0).toUpperCase() + string.slice(1);
 };
