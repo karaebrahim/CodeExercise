@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+	display: flex;
 	position: relative;
 `;
 
 const Input = styled.input`
 	border: 1px solid lightgray;
 	height: 1rem;
-	width: 15rem;
+	width: 13rem;
 	padding: 0.5rem 2rem 0.5rem 0.5rem;
 
 	@media (max-width: 600px) {
