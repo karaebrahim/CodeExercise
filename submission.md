@@ -6,7 +6,7 @@ We've provided some questions to help guide you, but feel free to include any ad
 
 ## Given more time, what would you have included or done differently?
 
-- I didn't have time to implement fuzzy search, and my test suite could definitely be more robust.
+- I didn't have time to implement fuzzy search, and my test suite could definitely be more robust. I'm not happy with the Lighthouse performance score, but I'm happy with the app's overall functionality. I tried not to get too distracted by the design because I can go down a rabbit hole of trying to make everything look nice—if I had more time, I'd probably play with more animations.
 
 ## Did you deviate from the instructions? If so, why?
 
