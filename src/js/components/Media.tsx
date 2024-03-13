@@ -17,6 +17,32 @@ const ButtonContainer = styled.div`
   text-align: center;
 `;
 
+const Button = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+
+  &:first-child {
+    margin-right: 1rem;
+  }
+
+  &:disabled {
+    background-color: lightgray;
+
+    &:hover {
+      color: white;
+      cursor: not-allowed;
+    }
+  }
+
+  &:hover {
+    background-color: lightgray;
+    color: black;
+    cursor: pointer;
+  }
+`;
+
 const Para = styled.p`
   margin: 2rem auto;
   text-align: center;
@@ -93,15 +119,15 @@ const Media = () => {
         <Para>No data matches those filters. Please try again.</Para>
       ) : (
         <ButtonContainer>
-          <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+          <Button disabled={page === 1} onClick={() => setPage(page - 1)}>
             Previous
-          </button>
-          <button
+          </Button>
+          <Button
             disabled={page === totalPages}
             onClick={() => setPage(page + 1)}
           >
             Next
-          </button>
+          </Button>
         </ButtonContainer>
       )}
     </>
