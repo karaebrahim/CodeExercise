@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 const Loader = () => { // TODO: Add a loading animation
   return (
     <Wrapper>
-      <div>Loading...</div>
+      <div id="loader">Loading...</div>
     </Wrapper>
   )
 };

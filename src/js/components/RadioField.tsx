@@ -23,6 +23,7 @@ const RadioField = ({ value, type, setType }) => {
       <Input
         type="radio"
         name="type-radio"
+        role="radio"
         id={`${type}-radio`}
         value={`${type}`}
         checked={type == value ? true : false}

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { capitalize } from '../utils/capitalize';
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ const Card = ({ data }) => {
 				<Para>
 					<b>Genres: </b>
 					{data.genre
-						.map(a => a.charAt(0).toUpperCase() + a.substr(1))
+						.map(item => capitalize(item))
 						.join(', ')
 					}
 				</Para>
